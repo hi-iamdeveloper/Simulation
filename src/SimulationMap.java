@@ -12,6 +12,10 @@ public class SimulationMap {
         this.entities = new HashMap<>();
     }
 
+    public void moveEntity(Entity entity, Position newPos) {
+
+    }
+
     public Optional<Entity> getEntity(Position position) {
         return Optional.ofNullable(entities.get(position));
     }

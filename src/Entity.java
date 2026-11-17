@@ -1,4 +1,4 @@
-public abstract class Entity {
+public class Entity {
 
     private final char symbol;
 
@@ -9,4 +9,5 @@ public abstract class Entity {
     public char getSymbol() {
         return symbol;
     }
+
 }
