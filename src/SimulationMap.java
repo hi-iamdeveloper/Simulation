@@ -12,8 +12,14 @@ public class SimulationMap {
         this.entities = new HashMap<>();
     }
 
-    public void moveEntity(Entity entity, Position newPos) {
-
+    public void moveEntity(Entity entity, Position newEntityPosition) {
+        Optional<Position> currentPosition = getPosition(entity);
+        if (currentPosition.isEmpty()) {
+            return;
+        }
+        Position current = currentPosition.get();
+        entities.remove(current);
+        entities.put(newEntityPosition, entity);
     }
 
     public Optional<Entity> getEntity(Position position) {
@@ -43,5 +49,14 @@ public class SimulationMap {
 
     public int getWidth() {
         return width;
+    }
+
+    public Optional<Position> getPosition(Entity entity) {
+        for (Position pos : entities.keySet()) {
+            if (entities.get(pos) == entity) {
+                return Optional.of(pos);
+            }
+        }
+        return Optional.empty();
     }
 }
